@@ -1,0 +1,70 @@
+1 # -*- coding: utf-8 -*-
+2 """
+3 Created on Sun Jun  7 21:30:20 2020
+4 
+5 @author: Aaron
+6 """
+7 
+8 
+9 """
+10 Write a function called line_number that takes as parameters two strings representing
+11 file names. Assume these are text files, like .py source files. The function reads the
+12 file indicated by the first parameter and writes its lines prefixed by the line number
+13 to a new file named after the second parameter.
+14 
+15 The function must have a proper docstring and annotations. Use try/except and
+16 in case of an error print a user-friendly message to the terminal and re-raise
+17 the exception.
+18 """
+19 
+20 def line_number(input_filename, output_filename):
+21 input_file = open(input_filename, "r")
+22 output_file = open(output_filename, "w")
+23 
+24 i = 1
+25 for line_str in input_file:
+26 new_str = ""
+27 line_str = line_str.strip()
+28 new_str = str(i) + " " + line_str
+29 print(new_str, file=output_file)
+30 i+=1
+31 
+32 input_file.close()
+33 output_file.close()
+34 
+35 #main
+36 line_number("p1.py", "p1.py.txt")
+37 
+38 """
+39 Write a function called strip_comments that takes as parameters a source file name
+40 (string, e.g. a Python file), a destination file name (string), and a comment prefix
+41 (string) and that removes all comments that start with the prefix string from the first
+42 source file and writes the resulting content to the second file whose name is given.
+43 
+44 For Python, the prefix is "#", for C/C++ it could be "//". If a comment starts at the
+45 beginning of a line then the entire line is removed from the resulting file. A comment
+46 in Python and many other languages continues from the prefix string to the end f the line.
+47 """
+48 
+49 def strip_comments(input_filename, output_filename, comment_prefix):
+50 input_file = open(input_filename, "r") #COMMMENT
+51 output_file = open(output_filename, "w")  #COMMMENT
+52 #COMMMENT
+53 for line_str in input_file: #COMMMENT
+54 line_str = line_str.strip() #COMMMENT
+55 new_str = line_str #COMMMENT
+56 for index, char in enumerate(line_str): #COMMMENT
+57 if char == comment_prefix:
+58 new_str = line_str[0:index]
+59 
+60 print(new_str, file=output_file)
+61 
+62 input_file.close()
+63 output_file.close()
+64 #strip_comments("p1.py", "p1.py.txt", "#")
+65 
+66 
+67 
+68 
+69 
+70 
